@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>
+    login page
+</title>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('https://img.freepik.com/free-vector/flat-design-forest-landscape_23-2149155031.jpg?w=1060&t=st=1694355774~exp=1694356374~hmac=b6c86cb7a1567eb56694d80d96bb133ca19ad07ded72f3f0c1089896b8e61482') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.logo{
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+
+}
+
+.navigation a {
+
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+
+}
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+.navigation a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+}
+/* Style the link to look like a button */
+.btnlogin-popup {
+    display: inline-block;
+    width: 130px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    text-decoration: none; /* Remove underline from the link */
+    transition: .5s;
+    
+}
+
+.btnlogin-popup:hover {
+    
+    background: #fff;
+    color: #162938;
+    text-decoration: none; /* Remove underline from the link on hover */
+}
+
+.container {
+            margin: 0 auto;
+            padding: 20px;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        p {
+            margin: 10px 0;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+</style>
+</head>
+<body>
+<header>
+   <h2 class="logo">logo</h2>
+   <nav class="navigation">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">services</a>
+    <a href="#">contact</a>
+    {% if user_data %}
+        <a class="btnlogin-popup" href="/logout">Logout</a>
+    {% else %}
+        <a class="btnlogin-popup" href="/lo">Login</a>
+    {% endif %}
+   </nav>  
+</header>
+{% if user_data %}
+<div class="container">
+    <h2>Registration Successful</h2>
+    <p><strong>Name:</strong> {{ user_data.name }}</p>
+    <p><strong>Age:</strong> {{ user_data.age }}</p>
+    <p><strong>Department:</strong> {{ user_data.department }}</p>
+    <p><strong>Phone Number:</strong> {{ user_data.phone }}</p>
+    <p><strong>Username:</strong> {{ user_data.username }}</p>
+</div>
+{% endif %}
+
+</div>
+</body>
+</htm>

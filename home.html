@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        /* Add some basic CSS for styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://img.freepik.com/free-vector/flat-design-forest-landscape_23-2149155031.jpg?w=1060&t=st=1694355774~exp=1694356374~hmac=b6c86cb7a1567eb56694d80d96bb133ca19ad07ded72f3f0c1089896b8e61482') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            width: 720px; /* Adjust the width to match your video dimensions */
+            
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #video {
+            width: 100%;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+           
+
+            <div>
+                <img id="video_feed" src="{{ url_for('video_feed') }}" alt="Video Feed" width="640" height="480">
+            </div>
+        
+            <!-- You can add more content here, such as attendance details or buttons -->
+        
+            <script>
+                // Automatically refresh the video feed every second
+                setInterval(function() {
+                    document.getElementById("video_feed").src = "{{ url_for('video_feed') }}?t=" + new Date().getTime();
+                }, 1000);
+            </script>
+            <br>
+            
+            <input type="submit" value="Login">
+        </form>
+
+        <p>Don't have an account? <a href="/reg">Register</a></p>
+    </div>
+</body>
+</html>
